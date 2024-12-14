@@ -1,6 +1,8 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../provider/AuthProvider'
+import Lottie from 'lottie-react'
+import loginData from '../assets/login.json'
 
 const Login = () => {
 
@@ -14,7 +16,7 @@ const Login = () => {
         })
     }
     return (
-        <div className=' w-11/12 mx-auto justify-center items-center flex pt-10'>
+        <div className=' w-11/12 mx-auto justify-center items-center flex pt-10 flex'>
             <div className="w-full max-w-md p-8 space-y-3 rounded-xl border">
                 <h1 className="text-2xl font-bold text-center">Login</h1>
                 <form noValidate="" action="" className="space-y-6">
@@ -56,6 +58,9 @@ const Login = () => {
                 <p className="text-xs text-center sm:px-6 dark:text-gray-600">Don't have an account?
                     <Link to={'/register'} rel="noopener noreferrer" href="#" className="underline text-red-500">Sign up</Link>
                 </p>
+            </div>
+            <div className="">
+            <Lottie animationData={loginData}></Lottie>
             </div>
         </div>
     )
