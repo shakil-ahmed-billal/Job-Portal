@@ -9,9 +9,10 @@ const Navbar = () => {
 
     const links = <>
         <li><Link to={'/'}>Home</Link></li>
-        <li><Link to={'/'}>Home</Link></li>
-        <li><Link to={'/'}>Home</Link></li>
-        <li><Link to={'/'}>Home</Link></li>
+        <li><Link to={'/all_jobs'}>All Jobs</Link></li>
+        <li><Link to={'/jobs_post'}> Jobs Post</Link></li>
+        <li><Link to={'/my_jobs'}>My Jobs</Link></li>
+        <li><Link to={'/my_application'}>My Application</Link></li>
     </>
 
     const handleSingOut = () =>{

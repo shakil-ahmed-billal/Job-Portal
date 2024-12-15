@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const TopJobs = () => {
 
@@ -38,7 +39,7 @@ const TopJobs = () => {
                     <p className='text-center my-3'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo perferendis exercitationem <br />doloremque fugiat labore ut ex, consequuntur cumque accusamus voluptas.</p>
                 </div>
                 <div className="grid grid-cols-4 gap-5 my-20">
-                    {jobs.map(job => <div key={job._id}>
+                    {jobs.slice(0 , 8).map(job => <div key={job._id}>
                         <div className="p-5 border-2 bg-gray-300 text-stone-900">
                             <div className="flex gap-2 items-center">
                                 <div className="">
@@ -57,7 +58,10 @@ const TopJobs = () => {
                             <div className="flex justify-between">
                             <p>Salary: ${job.salaryRange.min} to ${job.salaryRange.max}</p>
                             </div>
-                            <button className='btn mt-5 rounded-full bg-blue-200 text-black border-none hover:text-white'>Apply Now</button>
+                            <div className="flex justify-between">
+                            <Link to={`/job_apply/${job._id}`} className='btn mt-5 rounded-full bg-blue-200 text-black border-none hover:text-white'>Apply Now</Link>
+                            <Link to={`/job/${job._id}`} className='btn mt-5 rounded-full bg-blue-200 text-black border-none hover:text-white'>Job Details</Link>
+                            </div>
                         </div>
                     </div>)}
                 </div>
