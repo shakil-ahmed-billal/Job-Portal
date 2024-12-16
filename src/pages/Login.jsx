@@ -3,16 +3,19 @@ import { Link } from 'react-router-dom'
 import { AuthContext } from '../provider/AuthProvider'
 import Lottie from 'lottie-react'
 import loginData from '../assets/login.json'
-
+import axios from 'axios'
 const Login = () => {
 
     const {googlePopup } = useContext(AuthContext)
 
     const handleGoogle = () =>{
         googlePopup()
-        .then(res => res.json())
         .then(data => {
             console.log(data.user)
+            const user = {email: data.user.email}
+
+            axios.post('http://localhost:5000/jwt' , user , {withCredentials: true})
+            .then(res => console.log(res.data))
         })
     }
     return (

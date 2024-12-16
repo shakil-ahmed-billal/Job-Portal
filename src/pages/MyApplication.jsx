@@ -1,20 +1,25 @@
 import React, { useEffect, useState } from 'react'
 import useAuth from '../hook/useAuth'
+import axios from 'axios'
 
 const MyApplication = () => {
 
-    const {user} = useAuth()
+    const {user , loading} = useAuth()
     const [jobs , setJobs ]= useState([])
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/my-application/${user.email}`)
-        .then(res => res.json())
-        .then(data => setJobs(data))
-    },[])
+        // fetch(`http://localhost:5000/my-application/${user.email}`)
+        // .then(res => res.json())
+        // .then(data => setJobs(data))
+
+
+        axios.get(`http://localhost:5000/my-application/${user?.email}`,{withCredentials: true})
+        .then(res => console.log(setJobs(res.data)))
+    },[user])
 
     return (
         <div>
-            <div>
+            {loading? <>Loading</>: <div>
                 <h2 className="text-3xl">My Applications: {jobs.length}</h2>
                 <div className="overflow-x-auto">
                     <table className="table">
@@ -70,7 +75,7 @@ const MyApplication = () => {
                         </tbody>
                     </table>
                 </div>
-            </div>
+            </div>}
         </div>
     )
 }
